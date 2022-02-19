@@ -10,9 +10,7 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
-
-
-	<title>Todo app</title>
+	<title>Register</title>
 
 	<style type="text/css">
   .navbar-brand {
@@ -25,10 +23,8 @@
     position: relative;
   }
    </style>
-
 </head>
 <body>
-
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#" style="font-family: 'Montserrat';">Todo </a>
@@ -39,47 +35,53 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="{{url_for('home')}}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url_for('register')}}">Register</a>
+        <a class="nav-link" href="#">Register</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url_for('login')}}">login</a>
+        <a class="nav-link" href="{{ url_for('login')}}">login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{url_for('login')}}">logout</a>
-      </li>
-
     </ul>
    
   </div>
 </nav>
 
+<h1 style="padding: 0 70px;"> Register an Account </h1>
 
-<br>
-<div class="content-section" style="padding: 0 50px;" >
-    <form method="post" action="/add">
-    	<h2 style=""> Todo List</h2>
+<form class="me" method="POST" action="/register">
 
-        <div >
-        	<label for="item" class="form-control-label">
-        	<input class="form-control form-control-lg" name="item" required>
-        </div>
-        <br>
-        <div class="form-group" >
-            <button class="btn btn-primary" type="submit">Add</button>
-           <hr>
-          {% for todo in todo_list %}
-          <div>
-          	<p >{{ todo.id }}  {{ todo.item}}</p>
-          	<a  class="btn btn-danger" href="/delete/{{ todo.id }}">Delete</a>
-          </div>
+	<div class="form-group" style="width: 40%; padding: 0 70px;">
+		{{ form.first_name.label(class="form-control-label") }}
+		{{ form.first_name(class="form-control form-control-lg")}}
+	</div>
+	<div class="form-group" style="width: 40%; padding: 0 70px;">
+		{{ form.last_name.label(class="form-control-label") }}
+		{{ form.last_name(class="form-control form-control-lg")}}
+	</div>
+	<div class="form-group" style="width: 40%; padding: 0 70px;">
+		{{ form.username.label(class="form-control-label") }}
+		{{ form.username(class="form-control form-control-lg")}}
+	</div>
+	<div class="form-group" style="width: 40%; padding: 0 70px;">
+		{{ form.password.label(class="form-control-label") }}
+		{{ form.password(class="form-control form-control-lg")}}
+	</div>
+	<div class="form-group" style="width: 40%; padding: 0 70px;">
+		{{ form.confirm_password.label(class="form-control-label") }}
+		{{ form.confirm_password(class="form-control form-control-lg")}}
+	</div>
+	<br>
+	<div class="form-group" style="width: 40%; padding: 0 70px;">
+		{{ form.submit(class="btn btn-primary")}}
+	</div>
+</form>
 
-          {% endfor %}
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 </body>
 </html>
